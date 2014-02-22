@@ -3,3 +3,4 @@ yum -y install puppet
 mkdir -p /tmp/modules
 puppet module install stephenrjohnson/puppet --modulepath=/tmp/modules
 puppet apply --modulepath=/tmp/modules --execute "class{'::puppet::master':}"
+rm -rf /tmp/modules
