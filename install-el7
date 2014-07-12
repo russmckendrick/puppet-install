@@ -1,0 +1,6 @@
+yum install -y http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm https://anorien.csc.warwick.ac.uk/mirrors/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm vim-enhanced
+yum -y install puppet
+mkdir -p /tmp/modules
+puppet module install stephenrjohnson/puppet --modulepath=/tmp/modules
+puppet apply --modulepath=/tmp/modules --execute "class{'::puppet::master':}"
+rm -rf /tmp/modules
