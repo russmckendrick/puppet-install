@@ -1,23 +1,6 @@
-OS_MAJ_VERSION=$(rpm -qa \*-release | grep -Ei "oracle|redhat|centos" | cut -d"-" -f3)
-
-if [ "$OS_MAJ_VERSION" -eq 6 ]; then
-  yum install -y http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-elif [ "$OS_MAJ_VERSION" -eq 7 ]; then
-  yum install -y http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm http://yum.theforeman.org/nightly/el7/x86_64/mod_passenger-4.0.18-9.6.el7.x86_64.rpm http://yum.theforeman.org/nightly/el7/x86_64/rubygem-passenger-4.0.18-9.6.el7.x86_64.rpm http://yum.theforeman.org/nightly/el7/x86_64/rubygem-passenger-native-4.0.18-9.6.el7.x86_64.rpm http://yum.theforeman.org/nightly/el7/x86_64/rubygem-passenger-native-libs-4.0.18-9.6.el7.x86_64.rpm
-fi
+yum install -y http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-6.noarch.rpm http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 yum -y install puppet
 mkdir -p /tmp/modules
-
 puppet module install stephenrjohnson/puppet --modulepath=/tmp/modules
-
-if [ "$OS_MAJ_VERSION" -eq 7 ]; then
-  rm -rf /tmp/modules/puppet/templates/puppet_passenger.conf.erb
-  echo "PassengerHighPerformance on
-  PassengerPoolIdleTime 1500
-  # PassengerMaxRequests 1000
-  PassengerStatThrottleRate 120
-  PassengerTempDir /var/run/rubygem-passenger" > /tmp/modules/puppet/templates/puppet_passenger.conf.erb
-fi
-
 puppet apply --modulepath=/tmp/modules --execute "class{'::puppet::master':}"
 rm -rf /tmp/modules
