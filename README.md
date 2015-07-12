@@ -2,19 +2,18 @@
 
 ## Master
 
-A quick one liner to install and configure puppetserver on an EL7 server. This assumes a FDQN host name and clean CentOS / RHEL build;
+A quick one liner to install and configure puppetserver on an CentOS server. This assumes a FDQN host name and clean CentOS / RHEL build;
 
 ```bash
 curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/install | bash
 ```
 
-This script will not touch any firewall rules, to open up port 8140 on your server run;
+This script will not touch any firewall rules, to open up port 8140 on an EL7 server run;
 
 ```bash
 firewall-cmd --permanent --zone=public --add-port=8140/tcp
 systemctl restart firewalld.service
 ```
-
 
 ## Agent
 
