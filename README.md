@@ -2,7 +2,7 @@
 
 ## Server
 
-A quick one liner to install and configure Puppet Server on an CentOS server. This assumes a FDQN host name and clean CentOS / RHEL build;
+A quick one liner to install and configure Puppet Server on a RHEL / CentOS server. This assumes a FDQN host name and clean RHEL / CentOS build;
 
 ```bash
 curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/install | bash
@@ -17,7 +17,7 @@ systemctl restart firewalld.service
 
 ## Agent
 
-A quick one liner to install and configure a puppet agent. This assumes a FDQN host name and clean CentOS / RHEL build, make sure you pass the script details of your Puppet Master;
+A quick one liner to install and configure a puppet agent. This assumes a FDQN host name and clean RHEL / CentOS build, make sure you pass the script the hostname of your Puppet Server at the end;
 
 ```bash
 curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/agent | bash -s puppet.master.com
