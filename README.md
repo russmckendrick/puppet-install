@@ -2,7 +2,7 @@
 
 ## Master
 
-A quick one liner to install and configure puppetserver on an CentOS server. This assumes a FDQN host name and clean CentOS / RHEL build;
+A quick one liner to install and configure Puppet Server on an CentOS server. This assumes a FDQN host name and clean CentOS / RHEL build;
 
 ```bash
 curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/install | bash
