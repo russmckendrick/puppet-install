@@ -36,6 +36,7 @@ echo "[main]
 [agent]
     classfile = $vardir/classes.txt
     localconfig = $vardir/localconfig" > /etc/puppet/puppet.conf
+<<<<<<< HEAD
 echo "=> Done!"
 echo "=> Ensuring Puppet Agent is running ..."
 puppet resource service puppet ensure=running enable=true > /dev/null 2>&1
@@ -50,3 +51,7 @@ echo ""
 echo "on your Puppet Master ($MASTER_HOSTNAME) now"
 echo ""
 echo "======================================================================================"
+=======
+
+puppet resource service puppet ensure=running enable=true
+>>>>>>> origin/master
