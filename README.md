@@ -1,6 +1,6 @@
 # Install Puppet
 
-## Master
+## Server
 
 A quick one liner to install and configure Puppet Server on an CentOS server. This assumes a FDQN host name and clean CentOS / RHEL build;
 
