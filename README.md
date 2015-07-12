@@ -8,6 +8,13 @@ A quick one liner to install and configure puppetserver on an EL7 server. This a
 curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/install | bash
 ```
 
+This script will not touch any firewall rules, to open up port 8140 on your server run;
+
+```bash
+firewall-cmd --permanent --zone=public --add-port=8140/tcp
+systemctl restart firewalld.service
+```
+
 
 ## Agent
 
