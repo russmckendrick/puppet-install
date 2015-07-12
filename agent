@@ -18,6 +18,7 @@ then
   exit $E_BADARGS
 fi
 MASTER_HOSTNAME=$1
+MY_HOSTNAME=$HOSTNAME
 echo "=> Found $MASTER_HOSTNAME"
 echo "=> Done!"
 echo "=> Adding Puppetlabs Yum repo ..."
@@ -45,8 +46,8 @@ echo "==========================================================================
 echo ""
 echo "Puppet Agent installed, you should run;"
 echo ""
-echo "puppet cert sign $MASTER_HOSTNAME"
+echo "puppet cert sign $MY_HOSTNAME"
 echo ""
-echo "on your Puppet Master ($MASTER_HOSTNAME) now"
+echo "on your Puppet Master ($MASTER_HOSTNAME) as soon as possible."
 echo ""
 echo "======================================================================================"
