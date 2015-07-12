@@ -2,18 +2,10 @@
 
 ## Master
 
-A quick one liner to install and configure a puppet master. This assumes a FDQN host name and clean CentOS / RHEL build;
-
-### EL6
+A quick one liner to install and configure puppetserver on an EL7 server. This assumes a FDQN host name and clean CentOS / RHEL build;
 
 ```bash
 curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/install | bash
-```
-
-### EL7
-
-```bash
-curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/install-el7 | bash
 ```
 
 
