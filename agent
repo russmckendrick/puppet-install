@@ -17,7 +17,7 @@ echo "[main]
     logdir = /var/log/puppet
     rundir = /var/run/puppet
     ssldir = $vardir/ssl
-    server=$MASTER_HOSTNAME
+    server = $MASTER_HOSTNAME
 
 [agent]
     classfile = $vardir/classes.txt
