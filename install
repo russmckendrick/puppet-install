@@ -13,7 +13,7 @@ echo "=> Adding Puppetlabs Yum repo ..."
 yum install -y http://yum.puppetlabs.com/puppetlabs-release-el-"$OS_MAJ_VERSION".noarch.rpm > /dev/null 2>&1
 echo "=> Done!"
 echo "=> Installing Puppet Server ..."
-yum install puppetserver  > /dev/null 2>&1
+yum install -y puppetserver  > /dev/null 2>&1
 echo "=> Done!"
 echo "=> Setting some lower memory limits ..."
 sed -i 's/-Xms2g -Xmx2g -XX:MaxPermSize=256m/-Xms512m -Xmx512m -XX:MaxPermSize=256m/g' /etc/sysconfig/puppetserver
