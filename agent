@@ -28,15 +28,16 @@ echo "=> Installing Puppet Agent ..."
 yum -y install puppet > /dev/null 2>&1
 echo "=> Done!"
 echo "=> Configuring Puppet Agent ..."
-echo "[main]
+echo '[main]
     logdir = /var/log/puppet
     rundir = /var/run/puppet
     ssldir = $vardir/ssl
-    server = $MASTER_HOSTNAME
+    server = MASTER_HOSTNAME
 
 [agent]
     classfile = $vardir/classes.txt
-    localconfig = $vardir/localconfig" > /etc/puppet/puppet.conf
+    localconfig = $vardir/localconfig' > /etc/puppet/puppet.conf
+sed -i "s/MASTER_HOSTNAME/$MASTER_HOSTNAME/g" /etc/puppet/puppet.conf
 echo "=> Done!"
 echo "=> Ensuring Puppet Agent is running ..."
 puppet resource service puppet ensure=running enable=true > /dev/null 2>&1

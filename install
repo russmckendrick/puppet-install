@@ -2,9 +2,10 @@ echo "==========================================================================
 echo ""
 echo "Puppet Server Installation"
 echo ""
-echo "This script will insall PuppetServer on a RHEL / CentOS server.."
+echo "This script will insall PuppetServer on a RHEL / CentOS server."
 echo ""
 echo "======================================================================================"
+MY_HOSTNAME=$HOSTNAME
 echo ""
 echo "=> Getting OS version ..."
 OS_MAJ_VERSION=$(rpm -qa \*-release | grep -Ei "oracle|redhat|centos" | cut -d"-" -f3)
@@ -18,6 +19,17 @@ echo "=> Done!"
 echo "=> Setting some lower memory limits ..."
 sed -i 's/-Xms2g -Xmx2g -XX:MaxPermSize=256m/-Xms512m -Xmx512m -XX:MaxPermSize=256m/g' /etc/sysconfig/puppetserver
 echo "=> Done!"
+echo "=> Adding $MY_HOSTNAME to local Puppet Agent configuration ..."
+echo '[main]
+logdir = /var/log/puppet
+rundir = /var/run/puppet
+ssldir = $vardir/ssl
+[agent]
+classfile = $vardir/classes.txt
+server = MY_HOSTNAME
+localconfig = $vardir/localconfig' > /etc/puppet/puppet.conf
+sed -i "s/MY_HOSTNAME/$MY_HOSTNAME/g" /etc/puppet/puppet.conf
+echo "=> Done!"
 echo "=> Setting Puppet Server to start on boot ..."
 chkconfig puppetserver on  > /dev/null 2>&1
 echo "=> Done!"
@@ -28,9 +40,9 @@ echo ""
 echo "======================================================================================"
 echo ""
 echo "Puppet Server installed, depending on how much RAM you have consider updating the 512m"
-echo "on the line which contains;"
+echo "on the following;"
 echo ""
-echo "-Xms512m -Xmx512m -XX:MaxPermSize=256m"
+echo 'JAVA_ARGS="-Xms512m -Xmx512m -XX:MaxPermSize=256m"'
 echo ""
 echo "in /etc/sysconfig/puppetserver and then restart the service with;"
 echo ""
