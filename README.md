@@ -17,8 +17,18 @@ systemctl restart firewalld.service
 
 ## Agent
 
+### CentOS / RHEL
+
 A quick one liner to install and configure a puppet agent. This assumes a FDQN host name and clean RHEL / CentOS build, make sure you pass the script the hostname of your Puppet Server at the end;
 
 ```bash
 curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/agent | bash -s puppet.master.com
+```
+
+### Ubuntu
+
+A quick one liner to install and configure a puppet agent.
+
+```bash
+curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/ubuntu | bash
 ```
